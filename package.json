@@ -1,0 +1,55 @@
+{
+  "name": "dsh-hello",
+  "version": "0.1.0",
+  "description": "DSH 插件模板：一个模型工具 + 一个斜杠命令 + 可配置问候语",
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "icon.svg",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.2-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.2-rc.1": "compatible"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs",
+    "check": "node --check lib/index.js"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-tools": "0.2.2-rc.1",
+    "@deepseek-ai/schemastery": "~3.19.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.1.0"
+  }
+}

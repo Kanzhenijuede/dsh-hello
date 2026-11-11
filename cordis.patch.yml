@@ -1,0 +1,18 @@
+# ============================================================================
+# dsh-hello 的 bundle patch —— 把插件挂进 DSH 配置树
+# ============================================================================
+#
+# · insert: 向配置树添加插件行；id 是行标识，patch 覆盖时按它定位。
+# · id 必须全局唯一，且与 package.json 的 name 一致 —— 商城上架预检按它比对 entry ID。
+# · name 写包名，Loader 解析到该包的 package.json main（lib/index.js）。
+# · "id: 值" 那一行不要写行尾注释，否则商城预检抓不到 entry ID。
+#
+# 用户自己的覆盖层（$DSH_HOME/profiles/<profile>/cordis.patch.yml）里
+# 只写 `- id: dsh-hello` + `disabled: true/false`，就能开关这个插件。
+
+- insert:
+    - id: dsh-hello
+      name: 'dsh-hello'
+      config:
+        greeting: '你好'
+        shout: false
